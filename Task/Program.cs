@@ -3,6 +3,13 @@ using Microsoft.EntityFrameworkCore;
 using Task.Data;
 
 var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("TaskContextConnection") ?? throw new InvalidOperationException("Connection string 'TaskContextConnection' not found.");
+
+builder.Services.AddDbContext<TaskContext>(options =>
+    options.UseSqlServer(connectionString));;
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<TaskContext>();;
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
