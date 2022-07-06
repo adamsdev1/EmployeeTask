@@ -2,11 +2,11 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace Task.Data;
+namespace EmployeeTask.Data;
 
-public class TaskContext : IdentityDbContext<IdentityUser>
+public class EmployeeTaskContext : IdentityDbContext<IdentityUser>
 {
-    public TaskContext(DbContextOptions<TaskContext> options)
+    public EmployeeTaskContext(DbContextOptions<EmployeeTaskContext> options)
         : base(options)
     {
     }

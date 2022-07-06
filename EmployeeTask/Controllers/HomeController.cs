@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using Task.Models;
+using EmployeeTask.Models;
 
-namespace Task.Controllers
+namespace EmployeeTask.Controllers
 {
     public class HomeController : Controller
     {

@@ -1,4 +1,4 @@
-namespace Task.Models
+namespace EmployeeTask.Models
 {
     public class ErrorViewModel
     {

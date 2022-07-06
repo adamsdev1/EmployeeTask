@@ -1,24 +1,27 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Task.Data;
+using EmployeeTask.Data;
 
 var builder = WebApplication.CreateBuilder(args);
-var connectionString = builder.Configuration.GetConnectionString("TaskContextConnection") ?? throw new InvalidOperationException("Connection string 'TaskContextConnection' not found.");
+var connectionString = builder.Configuration.GetConnectionString("EmployeeTaskContextConnection") ?? throw new InvalidOperationException("Connection string 'EmployeeTaskContextConnection' not found.");
 
-builder.Services.AddDbContext<TaskContext>(options =>
+builder.Services.AddDbContext<EmployeeTaskContext>(options =>
     options.UseSqlServer(connectionString));;
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<TaskContext>();;
+    .AddEntityFrameworkStores<EmployeeTaskContext>();;
 
 // Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+//var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
+
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
